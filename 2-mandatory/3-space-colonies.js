@@ -15,7 +15,16 @@
   
 */
 
-function colonisers() {}
+function colonisers(arr) {
+  return arr.filter(item=> {
+    let one = item.split(' ')
+    if(one[1]==='family' && one[0][0].toUpperCase() === 'A'){
+      return true
+    }else{
+      return false
+    }
+  })
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 
@@ -34,6 +43,7 @@ const voyagers = [
   "Archer family",
 ];
 
+const { truncate } = require("fs/promises");
 const util = require("util");
 
 function test(test_name, actual, expected) {

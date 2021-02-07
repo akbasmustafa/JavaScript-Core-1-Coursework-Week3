@@ -22,8 +22,49 @@ PasswordValidationResult=  [false, false, false, false, true]
 
 */
 
+function isSymbol(item){
+  let symbols = ["!", "#", "$", "%", ".", "*", "&"];
+  let isVal =  symbols.includes(item)
+  return isVal;
+}
+function hasUpperCase(password) {
+  const regex = /[A-Z]/g;
+  const found = password.match(regex);
+  return found !== null;
+}
+function hasLowerCase(password) {
+  const regex = /[a-z]/g;
+  const found = password.match(regex);
+  return found !== null;
+}
 function validatePasswords(passwords) {
+  let result = [];
 
+  for (let i=0; i<passwords.length;i++){
+    
+    result[i] = false;
+
+    let isDifferent = true;
+    for(let j=0; j<i;j++){
+      if (j !== i && passwords[j] === passwords[i]) {
+        isDifferent=false
+      }
+    }
+    if (isDifferent && passwords[i].length>=5){
+      if(hasUpperCase(passwords[i])){
+        if (hasLowerCase(passwords[i])) {
+          let hasNumber = passwords[i].split('').some((item) => !isNaN(item * 1));
+          if (hasNumber) {
+            if (passwords[i].split('').some(item=>isSymbol(item))) {
+              result[i] = true;
+            }
+          }
+        }
+      }
+
+    }
+  }
+  return result;
 }
 
 /* ======= TESTS - DO NOT MODIFY ===== */

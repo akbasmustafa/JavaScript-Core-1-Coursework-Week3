@@ -11,7 +11,12 @@
     Some string methods that might help you here are .replace() and .substring(). 
 */
 
-function safeLevels() {}
+function safeLevels(arr) {
+  return arr.find(item =>{
+    let num = parseFloat(item.substring(0,item.length-1));
+    return (num>19.5 && num < 23.5);
+  })
+}
 
 /* ======= TESTS - DO NOT MODIFY ===== */
 
