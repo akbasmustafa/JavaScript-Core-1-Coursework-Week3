@@ -8,7 +8,7 @@
 
 let statement = "I do not like programming";
 
-let result = "";
+let result = statement.substring(0, statement.search("not "))+statement.substring(statement.search("not ")+4,statement.length)
 
 console.log(result);
 
